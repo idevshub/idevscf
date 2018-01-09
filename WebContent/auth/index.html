@@ -1,0 +1,345 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Here You can host details about your College Fetivals.We design websites for college festivals like Symposiums, Tech-Fest, Seminor and culturals.">
+<meta name="keywords"
+	content="College symposiums, Technical Festival, Non-technical Festival, Culturals ,Technical events, Conferences">
+
+
+
+<!-- auth  -->
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<!-- jquery -->
+<script src="../jq/jquery.js"></script>
+<!-- custom  -->
+<script src="../custom/js/custom.js"></script>
+<script src="../custom/js/authPage.js"></script>
+<!-- design  -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../mdl/material.min.js"></script>
+
+
+<link rel="stylesheet" href="../bs/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../custom/css/custom.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="../mdl/material.min.css">
+
+<!--  -->
+
+
+<style type="text/css">
+.navbar-fixed {
+	top: 0;
+	position: fixed;
+	width: 100%;
+}
+
+#add_button {
+	position: fixed;
+	right: 5;
+	bottom: 5;
+	z-index: 10;
+}
+</style>
+</head>
+<body onload="initApp()">
+
+
+	<header id="nav_bar"
+		class="bs-docs-nav navbar navbar-default navbar-static-top">
+
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> College Fest <!-- <img alt="Brand" height="30px" width="80px" src="img/icon.jpg"> -->
+				</a>
+			</div>
+
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li style="background-color: white;"><a href="#">Home</a></li>
+					<li>
+					<li><a href="#">Create Events<span
+							class="glyphicon glyphicon-plus btnicon" aria-hidden="true"></span></a></li>
+					</li>
+					<li><a href="#">Create WebSites</a></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Event Type <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Technical Fests</a></li>
+							<li><a href="#">Culturals Fests</a></li>
+							<li><a href="#">Management Fests</a></li>
+							<li><a href="#">Sports Events</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Seminor</a></li>
+							<li><a href="#">Conferences</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Paper Presentation</a></li>
+							<li><a href="#">Project Presentation</a></li>
+							<li><a href="#">Workshops</a></li>
+
+						</ul></li>
+
+				</ul>
+
+
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li>
+						<form class="nav navbar-nav navbar-form navbar-right">
+							<div class="form-group">
+
+								<input id="search_box" type="text" class="form-control"
+									placeholder="Search">
+								<div class="mdl-tooltip mdl-tooltip--large" for="search_box">
+									Search For College Fest</div>
+								<button type="submit" class="btn btn-default">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							</div>
+
+						</form>
+					</li>
+					<li><a id="usrActivity" href="#" onclick="takeToLogin()">SignIn<span
+							class="glyphicon glyphicon-log-in btnicon" aria-hidden="true"></span></a></li>
+
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</header>
+
+
+
+	<div class="container" id="content_body">
+
+
+		<h3>User Login</h3>
+
+
+		<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+			class="mdl-chip__contact mdl-color--teal mdl-color-text--white">S</span>
+			<span class="mdl-chip__text">Social Login</span>
+		</span>
+
+
+		<div class="row" align="center" style="margin-top: 30;">
+			<div class="col-sm-12 col-xs-12 col-md-12">
+
+				<button style="margin-top: 20;" id="gSignIn" onclick="gSignIn()"
+					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent ">
+
+					Google Sign-In</button>
+			</div>
+			<div class="col-sm-12 col-xs-12 col-md-12">
+
+				<button style="margin-top: 20;" id="fbSignIn" onclick="fbSignIn()"
+					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent ">
+					Facebook Sign-In</button>
+			</div>
+		</div>
+
+		<hr>
+
+		<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+			class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+			<span class="mdl-chip__text">Email Login</span>
+		</span>
+
+		<div class="row" align="center" style="margin-top: 30;">
+			<div class="col-sm-12 col-xs-12 col-md-12">
+				<div
+					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<input class="mdl-textfield__input" type="text"
+						pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+						name="usrMailId" id="usrMailId"> <label
+						class="mdl-textfield__label" for="usrMailId">MailId</label> <span
+						class="mdl-textfield__error">Invalid Mail Id</span>
+				</div>
+
+			</div>
+
+		</div>
+		<div class="row" align="center" style="margin-top: 10;">
+			<div class="col-sm-12 col-xs-12 col-md-12">
+				<div
+					class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+					<input class="mdl-textfield__input" type="text" name="usrPassword"
+						id="usrPassword"> <label class="mdl-textfield__label"
+						for="usrPassword">Password</label>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="row" align="center" style="margin-top: 10;">
+			<div class="col-sm-12 col-xs-12 col-md-12">
+
+				<button style="margin-top: 20;" id="signIn" onclick="signIn()"
+					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent ">
+					Sign-In</button>
+				<button style="margin-top: 20;" id="signUp" onclick="signUp()"
+					class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent ">
+					Sign-Up</button>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+	<footer class="mdl-mega-footer" style="margin-top: 30;">
+		<div class="mdl-mega-footer__middle-section">
+
+
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">About</h1>
+				<p>Knowafest.com is a tie-up and a consortium of all the college
+					campus festivals in India. Our aim is to connect students from
+					campuses all over India by making them aware of Technical,
+					Cultural, Management Fests, Workshops, Conferences, Seminars
+					organized by each and every college in India.</p>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">Details</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">Specs</a></li>
+					<li><a href="#">Tools</a></li>
+					<li><a href="#">Resources</a></li>
+				</ul>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">Technology</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">How it works</a></li>
+					<li><a href="#">Patterns</a></li>
+					<li><a href="#">Usage</a></li>
+					<li><a href="#">Products</a></li>
+					<li><a href="#">Contracts</a></li>
+				</ul>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">FAQ</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">Questions</a></li>
+					<li><a href="#">Answers</a></li>
+					<li><a href="#">Contact us</a></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="mdl-mega-footer__bottom-section">
+			<div class="mdl-logo">Title</div>
+			<ul class="mdl-mega-footer__link-list">
+				<li><a href="#">Help</a></li>
+				<li><a href="#">Privacy & Terms</a></li>
+			</ul>
+		</div>
+
+	</footer>
+
+
+
+	<div id="add_button">
+
+		<button type="button" id="addbtn"
+			class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+			<i class="material-icons">add</i>
+		</button>
+
+	</div>
+
+	<!-- 
+	<div id="toast_cnt" class="mdl-js-snackbar mdl-snackbar">
+		<div class="mdl-snackbar__text"></div>
+		<button class="mdl-snackbar__action" type="button"></button>
+	</div>
+
+
+	<script>
+			(function() {
+				'use strict';
+				window['counter'] = 0;
+				var snackbarContainer = document.querySelector('#toast_cnt');
+				var showToastButton = document.querySelector('#share_btn');
+				showToastButton.addEventListener('click', function() {
+					'use strict';
+					console.log('click');
+					var data = {
+						message : 'Example Message # ' + ++counter
+					};
+					snackbarContainer.MaterialSnackbar.showSnackbar(data);
+				});
+			}());
+		</script>
+ -->
+
+
+	<dialog class="mdl-dialog mdl-dialog__actions--full-width">
+	<h4 class="mdl-dialog__title">Allow data collection?</h4>
+	<div class="mdl-dialog__content">
+		<div class="row">
+			<div class="col-sm-6 col-xs-12 col-md-6 mdl-js-ripple-effect">
+				Create WebSite</div>
+			<div class="col-sm-6 col-xs-12 col-md-6 mdl-js-ripple-effect">
+				Create Event</div>
+		</div>
+	</div>
+	</div>
+	<div class="mdl-dialog__actions">
+		<button type="button" class="mdl-button ">Agree</button>
+		<button type="button" class="mdl-button close">Disagree</button>
+	</div>
+	</dialog>
+
+
+	<script>
+		var dialog = document.querySelector('dialog');
+
+		var showDialogButton = document.querySelector('#addbtn');
+		if (!dialog.showModal) {
+			dialogPolyfill.registerDialog(dialog);
+		}
+		showDialogButton.addEventListener('click', function() {
+			dialog.showModal();
+		});
+
+		dialog.querySelector('.close').addEventListener('click', function() {
+			dialog.close();
+		});
+	</script>
+
+</body>
+</html>

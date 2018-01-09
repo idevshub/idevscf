@@ -1,0 +1,1418 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Here You can host details about your College Fetivals.We design websites for college festivals like Symposiums, Tech-Fest, Seminor and culturals.">
+<meta name="keywords"
+	content="College symposiums, Technical Festival, Non-technical Festival, Culturals ,Technical events, Conferences">
+
+
+<!-- auth  -->
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script src="custom/js/auth.js"></script>
+
+<!-- jquery -->
+<script src="jq/jquery.js"></script>
+<!-- custom  -->
+<script src="custom/js/custom.js"></script>
+<script src="custom/js/register.js"></script>
+<script src="custom/js/state.js"></script>
+
+<!-- design  -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="mdl/material.min.js"></script>
+
+
+<link rel="stylesheet" href="bs/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="custom/css/custom.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="mdl/material.min.css">
+
+<!--  -->
+
+
+
+
+<style type="text/css">
+#add_button {
+	position: fixed;
+	right: 5;
+	bottom: 5;
+	z-index: 10;
+}
+
+.
+.mdl-textfield__label {
+	font-color: #ff4081;
+}
+</style>
+</head>
+
+<body>
+
+	<header name="" id="nav_bar"
+		class="bs-docs-nav navbar navbar-default navbar-static-top">
+
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> College Fest <!-- <img alt="Brand" height="30px" width="80px" src="img/icon.jpg"> -->
+				</a>
+			</div>
+
+			<div class="collapse navbar-collapse" name=""
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li style="background-color: white;"><a href="#">Home</a></li>
+					<li>
+					<li><a href="#">Create Events<span
+							class="glyphicon glyphicon-plus btnicon" aria-hidden="true"></span></a></li>
+					</li>
+					<li><a href="#">Create WebSites</a></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Event Type <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Technical Fests</a></li>
+							<li><a href="#">Culturals Fests</a></li>
+							<li><a href="#">Management Fests</a></li>
+							<li><a href="#">Sports Events</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Seminor</a></li>
+							<li><a href="#">Conferences</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Paper Presentation</a></li>
+							<li><a href="#">Project Presentation</a></li>
+							<li><a href="#">Workshops</a></li>
+
+						</ul></li>
+
+				</ul>
+
+
+
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li>
+						<form class="nav navbar-nav navbar-form navbar-right">
+							<div class="form-group">
+
+								<input name="" id="search_box" type="text" class="form-control"
+									placeholder="Search">
+								<div class="mdl-tooltip mdl-tooltip--large" for="search_box">
+									Search For College Fest</div>
+								<button type="submit" class="btn btn-default">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							</div>
+
+						</form>
+					</li>
+					<li><a id="usrActivity" href="#" onclick="takeToLogin()">SignIn<span
+							class="glyphicon glyphicon-log-in btnicon" aria-hidden="true"></span></a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</header>
+
+
+	<div class="container">
+		<form action="/eventrecordapi" method="POST"
+			enctype="multipart/form-data">
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-12">
+
+					<h3>Event Registration</h3>
+
+				</div>
+
+			</div>
+
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">O</span>
+				<span class="mdl-chip__text">Organizer Details</span>
+			</span>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<input type="hidden" name="userId" id="userId">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="usrName"
+							id="usrName" required> <label
+							class="mdl-textfield__label" for="usrName">Your Name</label>
+					</div>
+
+
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" required
+							pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+							name="usrMailId" id="usrMailId"> <label
+							class="mdl-textfield__label" for="usrMailId">Your MailId</label>
+						<span class="mdl-textfield__error">Invalid Mail Id</span>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" required
+							pattern="\d{10}" name="usrMobNum" id="usrMobNum"> <label
+							class="mdl-textfield__label" for="usrMobNum">Your Mobile
+							Numbers</label> <span class="mdl-textfield__error">Invalid Mobile
+							Number</span>
+					</div>
+				</div>
+
+
+			</div>
+
+
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+				<span class="mdl-chip__text">Fest Details</span>
+			</span>
+
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="festName"
+							id="festName" required> <label
+							class="mdl-textfield__label" for="festName">Fest Name</label>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="festCaption"
+							id="festCaption" required> <label
+							class="mdl-textfield__label" for="festCaption">Fest
+							Caption</label>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="festTheme"
+							id="festTheme"> <label class="mdl-textfield__label"
+							for="festTheme">Fest Theme</label>
+					</div>
+
+				</div>
+			</div>
+
+
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							name="FestCollegeName" id="FestCollegeName" required> <label
+							class="mdl-textfield__label" for="FestCollegeName">College
+							Name</label>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<select class="mdl-textfield__input" type="text" name="festState"
+							onchange='selct_district(this.value)' id="festState" required>
+						</select>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<select class="mdl-textfield__input" type="text" name="festCity"
+							id="festCity" required>
+							<option value="SELECT CITY">SELECT CITY</option>
+						</select>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<div style="padding-top: 5;">
+						<h6>Event Starting Date</h6>
+					</div>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<div class="mdl-textfield mdl-js-textfield">
+						<input class="mdl-textfield__input" type="date"
+							name="festStartDate" id="festStartDate" required>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<div style="padding-top: 5;">
+						<h6>Event Ending Date</h6>
+					</div>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<div class="mdl-textfield mdl-js-textfield">
+						<input class="mdl-textfield__input" type="date" name="festEndDate"
+							id="festEndDate" required>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row">
+
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text" required
+							name="festDescription" id="festDescription" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="festDescription">Fest
+							Description</label>
+					</div>
+
+				</div>
+
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
+						required>
+						<textarea class="mdl-textfield__input" type="text"
+							name="festGuest" id="festGuest" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="festDescription">Fest
+							Guest</label>
+					</div>
+
+				</div>
+
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="festSponsers" id="festSponsers" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="festDescription">Fest
+							Sponsers</label>
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-sm-4 col-xs-4 col-md-3">
+
+					<input class="mdl-textfield__input" type="text" name="festLogolink"
+						id="festLogolink" /> <label class="mdl-textfield__label"
+						for="festLogolink">Fest Logo</label>
+				</div>
+
+				<div class="col-sm-4 col-xs-4 col-md-2  uploadBtn">
+					Upload Logo <input type="file" class="hide_file" name="logoFile"
+						id="logoFile" value="Upload Logo" />
+
+				</div>
+
+			</div>
+
+
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">F</span>
+				<span class="mdl-chip__text">Fest Type</span>
+			</span>
+
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Technical"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Technical</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Cultural"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Cultural</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Management"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Management</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Sports"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Sports</span>
+					</label>
+
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Literary"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Literary</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Trainings"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Trainings</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Conferences"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Conferences</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Seminar"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Seminar</span>
+					</label>
+
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Workshop"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Workshop </span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Symposium"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label"> Symposium </span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="YouthSummit"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label"> YouthSummit </span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Model United Nations"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label"> Model United Nations </span>
+					</label>
+
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="TEDx"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">TEDx</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Summit"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Summit</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Conclave"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Conclave</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Convention"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Convention</span>
+					</label>
+
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="EntrepreneurshipSummit"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">EntrepreneurshipSummit</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Medical"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Medical</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="Pharma"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">Pharma</span>
+					</label>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+						<input type="checkbox" value="BioMedical"
+						class="mdl-checkbox__input eventList" name="festType"> <span
+						class="mdl-checkbox__label">BioMedical</span>
+					</label>
+
+				</div>
+			</div>
+
+
+			<input type="hidden" name="selectedFestType" id="selectedFestType">
+			<input type="hidden" name="selectedDepType" id="selectedDepType">
+
+
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">E</span>
+				<span class="mdl-chip__text">Events List</span>
+			</span>
+
+
+			<div name="" id="eventDetailsContainer">
+
+				<div class="row" name="" id="eventId1">
+
+					<div class="col-sm-12 col-xs-12 col-md-4">
+
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text"
+								name="eventId1_name" id="eventId1_name" required> <label
+								class="mdl-textfield__label" for="eventId1_name">Event:
+								Name </label>
+						</div>
+					</div>
+
+					<div class="col-sm-12 col-xs-12 col-md-3">
+						<div class="mdl-textfield mdl-js-textfield">
+
+							<select class="mdl-textfield__input" name="eventId1_type"
+								id="eventId1_type">
+
+								<option value="">Event Type</option>
+								<option value="Technical">Technical</option>
+								<option value="Non-Technical">Non-Technical</option>
+								<option value="Culturals">Culturals</option>
+								<option value="others">others</option>
+
+							</select>
+
+						</div>
+					</div>
+
+
+
+					<div class="col-sm-10 col-xs-10 col-md-4">
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<textarea class="mdl-textfield__input" type="text"
+								name="eventId1_description" id="eventId1_description" rows="1"></textarea>
+							<label class="mdl-textfield__label" for="eventId1_description">Event
+								Description</label>
+						</div>
+					</div>
+
+					<!-- 	<div class="col-sm-2 col-xs-2 col-md-2">
+
+					<button type="button" name="" id="eventId1_remove"
+						class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+						<i class="material-icons">remove</i>
+					</button>
+
+				</div> -->
+				</div>
+
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4"></div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4"></div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<button style="float: right;" type="button" name=""
+						id="eventAddBtn"
+						class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+						<i class="material-icons" style="float: right;">add</i>
+					</button>
+				</div>
+
+
+			</div>
+
+
+			<div class="row">
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="workshopDetails" id="workshopDetails" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="workshopDetails">WorkShop
+							Details</label>
+					</div>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="paperpersentationDetails" id="paperpersentationDetails"
+							rows="5"></textarea>
+						<label class="mdl-textfield__label" for="paperpersentationDetails">PaperPresentation
+							Details</label>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="projectpresentationDetails" id="projectpresentationDetails"
+							rows="5"></textarea>
+						<label class="mdl-textfield__label"
+							for="projectpresentationDetails">Project Presentation
+							Details</label>
+					</div>
+
+				</div>
+
+			</div>
+			
+			
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">E</span>
+				<span class="mdl-chip__text">Fest Departments</span>
+			</span>
+
+			
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="CSE"><i></i>CSE</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="IT"><i></i>IT</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="MCA"><i></i>MCA</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="ECE"><i></i>ECE</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="EEE"><i></i>EEE</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="ECM"><i></i>ECM</label>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Design"><i></i>Design</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Aeronautical"><i></i>Aeronautical</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Mechanics"><i></i>Applied Mechanics</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Aerospace"><i></i>Aerospace</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Civil"><i></i>Civil</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Chemical"><i></i>Chemical</label>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="BBA"><i></i>BBA</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="MBA"><i></i>MBA</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Arts"><i></i>Arts</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Commerce"><i></i>Commerce</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Law"><i></i>Law</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Media"><i></i>Media</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Medical"><i></i>Medical</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="BioMedical"><i></i>BioMedical</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Pharmacy"><i></i>Pharmacy</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="BioTechnology"><i></i>BioTechnology</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Agricultural"><i></i>Agricultural</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Fashion"><i></i>Fashion</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Instrumentation"><i></i>Instrumentation</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Telecommunication"><i></i>Tele
+						Communication</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Mechanical"><i></i>Mechanical</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Energy"><i></i>Energy</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Industrial"><i></i>Industrial</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Automobile"><i></i>Automobile</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Ocean"><i></i>Ocean</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Metallurgy"><i></i>Metallurgy</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Marine"><i></i>Marine</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Mining"><i></i>Mining</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Material"><i></i>Material</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Physics"><i></i>Physics</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Food"><i></i>Food Processing</label>
+				</div>
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input
+						type="checkbox" class="mdl-checkbox__input depList"
+						name="festDept" value="Textile"><i></i>Textile</label>
+				</div>
+			</div>
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">R</span>
+				<span class="mdl-chip__text">Registeration Details</span>
+			</span>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="registrationDeadLine" id="registrationDeadLine" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="registrationDeadLine">Registration
+							DeadLine</label>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="registrationFees" id="registrationFees" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="registrationFees">Registration
+							Fees</label>
+					</div>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							name="registrationLink" id="registrationLink" /> <label
+							class="mdl-textfield__label" for="registrationLink">Registration
+							Link</label>
+					</div>
+				</div>
+
+
+			</div>
+
+
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">C</span>
+				<span class="mdl-chip__text">Contact Details</span>
+			</span>
+
+			<div name="" id="conatctPersonContainer">
+
+				<div class="row" name="" id="contactId1">
+
+					<div class="col-sm-12 col-xs-12 col-md-3">
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text" required
+								name="contactId1_name" id="contactId1_name" /> <label
+								class="mdl-textfield__label" for="contactId1_name">Contact
+								Person</label>
+						</div>
+					</div>
+
+					<div class="col-sm-12 col-xs-12 col-md-2">
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text"
+								name="contactId1_role" id="contactId1_role" /> <label
+								class="mdl-textfield__label" for="contactId1_role">Role</label>
+						</div>
+					</div>
+
+					<div class="col-sm-12 col-xs-12 col-md-3">
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text" required
+								name="contactId1_mailId" id="contactId1_mailId" /> <label
+								class="mdl-textfield__label" for="contactId1_mailId">mail
+								Id</label>
+						</div>
+					</div>
+
+					<div class="col-sm-12 col-xs-12 col-md-3">
+						<div
+							class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+							<input class="mdl-textfield__input" type="text"
+								name="contactId1_mobile" id="contactId1_mobile" /> <label
+								class="mdl-textfield__label" for="contactId1_mobile">Mobile
+								Number</label>
+						</div>
+					</div>
+
+					<!--  <div class="col-sm-12 col-xs-12 col-md-1">
+
+        <button style="float: right;" type="button" name="" id="removeContact"
+          class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+          <i class="material-icons" style="float: right;">delete</i>
+        </button>
+       </div> -->
+
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4"></div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4"></div>
+
+				<div class="col-sm-12 col-xs-12 col-md-3">
+
+					<button style="float: right;" type="button" name=""
+						id="contactAddBtn"
+						class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+						<i class="material-icons" style="float: right;">add</i>
+					</button>
+				</div>
+
+
+			</div>
+
+
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="accomodationDetails" id="accomodationDetails" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="accomodationDetails">Accomodation
+							Details</label>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="sponseshipContacts" id="sponseshipContacts" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="sponseshipContacts">Sponseship
+							Contacts</label>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="stallContacts" id="stallContacts" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="stallContacts">Stall
+							Contacts</label>
+					</div>
+				</div>
+
+			</div>
+
+
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">E</span>
+				<span class="mdl-chip__text">Event Address</span>
+			</span>
+
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text" required
+							name="eventAddress" id="eventAddress" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="eventAddress">Event
+							Address</label>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text"
+							name="transportDetails" id="transportDetails" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="transportDetails">Transport
+							Details</label>
+					</div>
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<textarea class="mdl-textfield__input" type="text" name="mapLink"
+							id="mapLink" rows="5"></textarea>
+						<label class="mdl-textfield__label" for="mapLink">Google
+							Map Link</label>
+					</div>
+				</div>
+
+
+			</div>
+
+
+			<span class="mdl-chip mdl-chip--contact topic-badge"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">E</span>
+				<span class="mdl-chip__text">Event Links</span>
+			</span>
+
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							name="eventWebsite" id="eventWebsite" /> <label
+							class="mdl-textfield__label" for="eventWebsite">Event
+							Website Link</label>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							name="collegeWebsite" id="collegeWebsite" /> <label
+							class="mdl-textfield__label" for="collegeWebsite">College
+							Website Link</label>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="gplusLink"
+							id="gplusLink" /> <label class="mdl-textfield__label"
+							for="gplusLink">Google pluse Link</label>
+					</div>
+
+				</div>
+
+			</div>
+
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="fbLink"
+							id="fbLink" /> <label class="mdl-textfield__label" for="fbLink">FaceBook
+							Page Link</label>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="twitterLink"
+							id="twitterLink" /> <label class="mdl-textfield__label"
+							for="twitterLink">Twitter Link</label>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="youtubeLink"
+							id="youtubeLink" /> <label class="mdl-textfield__label"
+							for="youtubeLink">YouTube Link</label>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="posterLink"
+							id="posterLink" /> <label class="mdl-textfield__label"
+							for="posterLink">Poster Link</label>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text" name="appLink"
+							id="appLink" /> <label class="mdl-textfield__label"
+							for="appLink">App Link</label>
+					</div>
+
+				</div>
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<div
+						class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						<input class="mdl-textfield__input" type="text"
+							name="brochureLink" id="brochureLink" /> <label
+							class="mdl-textfield__label" for="registrationLink">Brochure
+							Link</label>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="row">
+
+
+				<div class="col-sm-12 col-xs-12 col-md-4">
+
+					<input type="submit" name="submit">
+
+				</div>
+
+			</div>
+
+		</form>
+
+	</div>
+
+
+
+
+
+	<footer class="mdl-mega-footer">
+		<div class="mdl-mega-footer__middle-section">
+
+
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">About</h1>
+				<p>Knowafest.com is a tie-up and a consortium of all the college
+					campus festivals in India. Our aim is to connect students from
+					campuses all over India by making them aware of Technical,
+					Cultural, Management Fests, Workshops, Conferences, Seminars
+					organized by each and every college in India.</p>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">Details</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">Specs</a></li>
+					<li><a href="#">Tools</a></li>
+					<li><a href="#">Resources</a></li>
+				</ul>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">Technology</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">How it works</a></li>
+					<li><a href="#">Patterns</a></li>
+					<li><a href="#">Usage</a></li>
+					<li><a href="#">Products</a></li>
+					<li><a href="#">Contracts</a></li>
+				</ul>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">FAQ</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">Questions</a></li>
+					<li><a href="#">Answers</a></li>
+					<li><a href="#">Contact us</a></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="mdl-mega-footer__bottom-section">
+			<div class="mdl-logo">Title</div>
+			<ul class="mdl-mega-footer__link-list">
+				<li><a href="#">Help</a></li>
+				<li><a href="#">Privacy & Terms</a></li>
+			</ul>
+		</div>
+
+	</footer>
+
+
+	<!--
+dialog
+-->
+
+	<div class="modal fade" name="" id="myModal" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<!-- <div class="modal-header">
+        <h5 class="modal-title" name="" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+				<div class="modal-body">
+
+					<div class="container">
+
+						<div class="row">
+
+							<div class="col-sm-12 col-xs-12 col-md-12">
+
+								<h3>Create Event</h3>
+
+							</div>
+						</div>
+						<div class="row">
+
+							<div class="col-sm-12 col-xs-12 col-md-6">
+
+								<h3>Create Event WebSite</h3>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<!--<div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+		</div>
+	</div>
+
+
+	<div name="" id="add_button">
+
+		<button type="button" name="" id="addbtn"
+			class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored"
+			data-toggle="modal" data-target="#myModal">
+			<i class="material-icons">add</i>
+		</button>
+
+	</div>
+
+
+
+	<div name="" id="toast_cnt" class="mdl-js-snackbar mdl-snackbar">
+		<div class="mdl-snackbar__text"></div>
+		<button class="mdl-snackbar__action" type="button"></button>
+	</div>
+
+
+
+	<script>
+		(function() {
+			'use strict';
+			window['counter'] = 0;
+			var snackbarContainer = document.querySelector('#toast_cnt');
+			var showToastButton = document.querySelector('#addbtn');
+			showToastButton.addEventListener('click', function() {
+				'use strict';
+				console.log('click');
+				var data = {
+					message : 'Example Message # ' + ++counter
+				};
+				snackbarContainer.MaterialSnackbar.showSnackbar(data);
+			});
+		}());
+	</script>
+
+
+
+</body>
+</html>

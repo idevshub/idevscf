@@ -1,0 +1,193 @@
+/* Style all font awesome icons */
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+	}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+	/**/
+
+#add_button {
+	position: fixed;
+	right: 5;
+	bottom: 5;
+	z-index: 10;
+}
+
+
+.mdl-textfield__label {
+	font-color: #ff4081;
+}
+
+
+.contact-pic {
+	display: block;
+	border-radius: 70%;
+	width: 150px;
+	height: 150px;
+}
+
+nav{
+	height:8%;
+	padding-top:0.25%;
+
+}
+
+.btnicon{
+	margin-left: 5px;
+}
+
+ 
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 60%;
+      margin: auto;
+  }
+ 
+img{
+	width: 100%;
+	height: inherit;
+	display: block;
+	overflow: hidden;
+}
+
+@media only screen and (max-width: 20px) {
+
+   body { 
+   	font-size: 2em;	
+   }
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0 0 5px;
+    color: inherit;
+    font-weight: 700;
+    font-family: inherit;
+    line-height: 1.4;
+    text-rendering: auto;
+}
+
+.eventBtn{
+	
+}
+
+.icons-list-btn li{
+	margin: 0;
+    padding: 0;
+	float: left;
+    display: block;
+    list-style-type: none;
+   }
+
+   .likes .views{
+   	padding-top: 8px; 
+   	text-align: right;
+   }
+
+   .event-item{
+   	padding-top: 40px;
+   }
+
+   .extra-info{
+   	font-size: 15px;
+   	font-family: inherit;
+   	padding-top: 30px;
+   }
+
+   .event-date .event-place{
+   	padding-left: 10px;
+   }
+
+   .event-img{
+	width: inherit;
+	height: inherit;
+	display: block;
+	overflow: hidden;
+	}
+	.event-img-container {
+    width: 140px;
+    height: 72px;
+    float: left;
+    margin: 3px;
+    padding: 3px;
+	}
+
+
+  .demo-card-wide.mdl-card {
+  width: 300px;
+}
+
+.demo-card-wide>.mdl-card__title {
+  color: #fff;
+  height: 130px;
+}
+
+.demo-card-wide>.mdl-card__menu {
+  color: #fff;
+}
+
+.navbar-fixed {
+  top: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.topic-badge{
+
+    margin-bottom: 100;
+
+}
+
+
+.uploadBtn{
+  padding:5px 10px;
+  background:#ff4081;
+  border:1px solid #ff4081;
+  position:relative;
+  color:#fff;
+  border-radius:2px;
+  text-align:center;
+  float:left;
+  cursor:pointer
+}
+.hide_file {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    height: 100%;
+    font-size: 24px;
+    width: 100%;
+}

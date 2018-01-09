@@ -1,0 +1,443 @@
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Here You can host details about your College Fetivals.We design websites for college festivals like Symposiums, Tech-Fest, Seminor and culturals.">
+<meta name="keywords"
+	content="College symposiums, Technical Festival, Non-technical Festival, Culturals ,Technical events, Conferences">
+
+<!-- auth  -->
+<script src="https://www.gstatic.com/firebasejs/4.1.3/firebase.js"></script>
+<script src="custom/js/auth.js"></script>
+<!-- jquery -->
+<script src="jq/jquery.js"></script>
+<!-- custom  -->
+<script src="custom/js/custom.js"></script>
+<script src="custom/js/home.js"></script>
+<!-- design  -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="mdl/material.min.js"></script>
+
+
+<link rel="stylesheet" href="bs/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="custom/css/custom.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="mdl/material.min.css">
+
+<!--  -->
+
+<script type="text/javascript">
+	function create() {
+
+		createCardView({
+			festId : 1234,
+			img_url : 'http://college-fest-db.eu5.org/pics/149996426257179.jpg',
+			view_count : 100,
+			likes_count : 200,
+			rowId : 'row1'
+		});
+		createCardView({
+			festId : 1234,
+			img_url : 'http://college-fest-db.eu5.org/pics/149996426257179.jpg',
+			view_count : 100,
+			likes_count : 200,
+			rowId : 'row1'
+		});
+		createCardView({
+			festId : 1234,
+			img_url : 'http://college-fest-db.eu5.org/pics/149996426257179.jpg',
+			view_count : 100,
+			likes_count : 200,
+			rowId : 'row1'
+		});
+
+	}
+</script>
+
+
+
+<style type="text/css">
+.navbar-fixed {
+	top: 0;
+	position: fixed;
+	width: 100%;
+}
+</style>
+
+
+<style>
+.demo-card-wide.mdl-card {
+	width: 300px;
+	margin-top: 10;
+}
+
+.demo-card-wide>.mdl-card__title {
+	color: #fff;
+	height: 160px;
+}
+
+.demo-card-wide>.mdl-card__menu {
+	color: #fff;
+}
+</style>
+
+
+
+<style type="text/css">
+#add_button {
+	position: fixed;
+	right: 5;
+	bottom: 5;
+	z-index: 10;
+}
+</style>
+</head>
+<body>
+
+
+	<header id="nav_bar"
+		class="bs-docs-nav navbar navbar-default navbar-static-top">
+
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"> College Fest <!-- <img alt="Brand" height="30px" width="80px" src="img/icon.jpg"> -->
+				</a>
+			</div>
+
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li style="background-color: white;"><a href="#">Home</a></li>
+					<li>
+					<li><a href="#">Create Events<span
+							class="glyphicon glyphicon-plus btnicon" aria-hidden="true"></span></a></li>
+					</li>
+					<li><a href="#">Create WebSites</a></li>
+
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Event Type <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Technical Fests</a></li>
+							<li><a href="#">Culturals Fests</a></li>
+							<li><a href="#">Management Fests</a></li>
+							<li><a href="#">Sports Events</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Seminor</a></li>
+							<li><a href="#">Conferences</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Paper Presentation</a></li>
+							<li><a href="#">Project Presentation</a></li>
+							<li><a href="#">Workshops</a></li>
+
+						</ul></li>
+
+				</ul>
+
+
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<li>
+						<form class="nav navbar-nav navbar-form navbar-right">
+							<div class="form-group">
+
+								<input id="search_box" type="text" class="form-control"
+									placeholder="Search">
+								<div class="mdl-tooltip mdl-tooltip--large" for="search_box">
+									Search For College Fest</div>
+								<button type="submit" class="btn btn-default">
+									<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+								</button>
+							</div>
+
+						</form>
+					</li>
+					<li><a id="usrActivity" href="#" onclick="takeToLogin()">SignIn<span
+							class="glyphicon glyphicon-log-in btnicon" aria-hidden="true"></span></a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</header>
+
+
+
+	<div style="background-image: url('img/bgpic.jpg');">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-6 col-xs-12 col-md-10 col-md-offset-1"></div>
+				<div class="col-sm-6 col-xs-12 col-md-10 col-md-offset-1">
+					<div id="topBanner" class="carousel slide" data-ride="carousel">
+
+						<ol class="carousel-indicators">
+							<li data-target="#topBanner" data-slide-to="0" class="active"></li>
+							<li data-target="#topBanner" data-slide-to="1"></li>
+							<li data-target="#topBanner" data-slide-to="2"></li>
+							<li data-target="#topBanner" data-slide-to="3"></li>
+						</ol>
+
+
+						<div class="carousel-inner" role="listbox">
+							<div class="item active">
+								<div class="carousel-caption d-none d-md-block">
+									<h4>Hello slide</h4>
+									<p>Slide</p>
+								</div>
+								<img class="d-block img-fluid" src="img/slide.jpg" alt="Chania">
+
+							</div>
+
+							<div class="item">
+								<img class="d-block img-fluid" src="img/slide.jpg" alt="Chania">
+							</div>
+
+							<div class="item">
+								<img class="d-block img-fluid" src="img/slide.jpg" alt="Flower">
+							</div>
+
+							<div class="item">
+								<img class="d-block img-fluid" src="img/slide.jpg" alt="Flower">
+							</div>
+						</div>
+
+						<a class="left carousel-control" style="background-image: none;"
+							href="#topBanner" role="button" data-slide="prev"> <span
+							class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a> <a class="right carousel-control" style="background-image: none;"
+							href="#topBanner" role="button" data-slide="next"> <span
+							class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container" id="content_body">
+
+		<div class="row">
+
+			<span class="mdl-chip mdl-chip--contact"> <span
+				class="mdl-chip__contact mdl-color--teal mdl-color-text--white">E</span>
+				<span class="mdl-chip__text">Events</span>
+			</span>
+		</div>
+
+
+		<div class="row" id="row1">
+
+
+
+			<div class="col-sm-6 col-xs-12 col-md-3 col-md-offset-1">
+
+				<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+					<div class="mdl-card__title"
+						style="background: url('http://college-fest-db.eu5.org/pics/1499890951087151.jpg') center/cover;">
+						<h2 class="mdl-card__title-text">Welcome</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							Mauris sagittis pellentesque lacus eleifend lacinia...</p>
+						<div>
+							<span> <i class="material-icons">event </i> 28/10/2017
+							</span> <span align="right"> <i class="material-icons">location_on
+							</i> Chennai
+							</span>
+						</div>
+					</div>
+					<div class="mdl-card__actions mdl-card--border">
+						<!--  <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      Get Started
+    </a> -->
+
+						<button
+							class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+							id="share_btn">
+							<i class="material-icons">share</i>
+						</button>
+
+						<button
+							class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+							id="share_btn">
+							<i class="material-icons">favorite</i>
+						</button>
+
+						<button
+							class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+							id="share_btn">
+							<i class="material-icons">event note</i>
+						</button>
+
+						<button class="mdl-button mdl-js-button mdl-js-ripple-effect"
+							style="align: right;" id="share_btn">read more</button>
+					</div>
+					<div class="mdl-card__menu">
+						<button
+							class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
+							id="share_btn">
+							<i class="material-icons">share</i>
+						</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+	</div>
+
+
+	<footer class="mdl-mega-footer">
+		<div class="mdl-mega-footer__middle-section">
+
+
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">About</h1>
+				<p>Knowafest.com is a tie-up and a consortium of all the college
+					campus festivals in India. Our aim is to connect students from
+					campuses all over India by making them aware of Technical,
+					Cultural, Management Fests, Workshops, Conferences, Seminars
+					organized by each and every college in India.</p>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">Details</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">Specs</a></li>
+					<li><a href="#">Tools</a></li>
+					<li><a href="#">Resources</a></li>
+				</ul>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">Technology</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">How it works</a></li>
+					<li><a href="#">Patterns</a></li>
+					<li><a href="#">Usage</a></li>
+					<li><a href="#">Products</a></li>
+					<li><a href="#">Contracts</a></li>
+				</ul>
+			</div>
+
+			<div class="mdl-mega-footer__drop-down-section">
+				<input class="mdl-mega-footer__heading-checkbox" type="checkbox"
+					checked>
+				<h1 class="mdl-mega-footer__heading">FAQ</h1>
+				<ul class="mdl-mega-footer__link-list">
+					<li><a href="#">Questions</a></li>
+					<li><a href="#">Answers</a></li>
+					<li><a href="#">Contact us</a></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="mdl-mega-footer__bottom-section">
+			<div class="mdl-logo">Title</div>
+			<ul class="mdl-mega-footer__link-list">
+				<li><a href="#">Help</a></li>
+				<li><a href="#">Privacy & Terms</a></li>
+			</ul>
+		</div>
+
+	</footer>
+
+
+
+	<div id="add_button">
+
+		<button type="button" id="addbtn"
+			class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+			<i class="material-icons">add</i>
+		</button>
+
+	</div>
+
+
+	<div id="toast_cnt" class="mdl-js-snackbar mdl-snackbar">
+		<div class="mdl-snackbar__text"></div>
+		<button class="mdl-snackbar__action" type="button"></button>
+	</div>
+
+
+	<script>
+		(function() {
+			'use strict';
+			window['counter'] = 0;
+			var snackbarContainer = document.querySelector('#toast_cnt');
+			var showToastButton = document.querySelector('#share_btn');
+			showToastButton.addEventListener('click', function() {
+				'use strict';
+				console.log('click');
+				var data = {
+					message : 'Example Message # ' + ++counter
+				};
+				snackbarContainer.MaterialSnackbar.showSnackbar(data);
+			});
+		}());
+	</script>
+
+
+
+	<dialog class="mdl-dialog mdl-dialog__actions--full-width">
+	<h4 class="mdl-dialog__title">Allow data collection?</h4>
+	<div class="mdl-dialog__content">
+		<div class="row">
+			<div class="col-sm-6 col-xs-12 col-md-6 mdl-js-ripple-effect">
+				Create WebSite</div>
+			<div class="col-sm-6 col-xs-12 col-md-6 mdl-js-ripple-effect">
+				Create Event</div>
+		</div>
+	</div>
+	</div>
+	<div class="mdl-dialog__actions">
+		<button type="button" class="mdl-button ">Agree</button>
+		<button type="button" class="mdl-button close">Disagree</button>
+	</div>
+	</dialog>
+
+
+	<script>
+		var dialog = document.querySelector('dialog');
+
+		var showDialogButton = document.querySelector('#addbtn');
+		if (!dialog.showModal) {
+			dialogPolyfill.registerDialog(dialog);
+		}
+		showDialogButton.addEventListener('click', function() {
+			dialog.showModal();
+		});
+
+		dialog.querySelector('.close').addEventListener('click', function() {
+			dialog.close();
+		});
+	</script>
+
+</body>
+</html>
